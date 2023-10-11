@@ -1,0 +1,45 @@
+<script type="text/javascript">
+    RED.nodes.registerType("wsled to homekit", {
+        category: "parser",
+        color: "#DEBD5C",
+        defaults: {
+            name: { value: "" },
+            kind: { required: true },
+            offset: { required: true, validate: RED.validators.number() },
+            count: { required: true, validate: RED.validators.number() }
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "parser-json.svg",
+        label: function() {
+            return this.name || "wsled to homekit";
+        }
+    });
+</script>
+
+
+<script type="text/html" data-template-name="wsled to homekit">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-kind"><i class="fa fa-wrench"></i> LED Type</label>
+        <select id="node-input-kind">
+            <option value="WS2812B">WS2812B</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-offset"><i class="fa fa-wrench"></i> LED Offset</label>
+        <input id="node-input-offset" type="number" min="0" max="4095">
+    </div>
+    <div class="form-row">
+        <label for="node-input-count"><i class="fa fa-wrench"></i> LED Count</label>
+        <input id="node-input-count" type="number" min="1" max="4096">
+    </div>
+</script>
+
+
+<script type="text/html" data-help-name="wsled to homekit">
+    <p>Converts WS*-LED state messages to HomeKit compatible state messages</p>
+</script>
